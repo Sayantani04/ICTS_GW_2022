@@ -1,0 +1,93 @@
+% This is a template for doing homework assignments in LaTeX
+
+\documentclass{article} % This command is used to set the type of document you are working on such as an article, book, or presenation
+
+\usepackage[margin=1in,footskip=0.25in]{geometry} % This package allows the editing of the page layout
+\usepackage{amsmath}  % This package allows the use of a large range of mathematical formula, commands, and symbols
+\usepackage{graphicx}  % This package allows the importing of images
+\usepackage{hyperref}
+
+\newcommand{\question}[2][]{\begin{flushleft}
+        \textbf{Problem #1}: %\textbf{Gaussian - Gaussian Model}  
+\end{flushleft}
+}
+
+\newcommand{\sol}{\textbf{Solution}:} %Use if you want a boldface solution line
+\newcommand{\maketitletwo}[2][]{\begin{center}
+        \Large{\textbf{Problem Set - 4}
+            
+            Compact Binary Evolution, Rates and Population Modelling} % Name of course here
+        \vspace{10pt}
+        
+        \normalsize{Mukesh Kumar Singh, Srashti Goyal, Soummyadip Basak  % Your name here
+        } \\
+        \vspace{5pt}  June 8, 2022     % Change to due date if preferred
+        \vspace{15pt}
+        
+\end{center}}
+\begin{document}
+    \maketitletwo[5]  % Optional argument is assignment number
+    %Keep a blank space between maketitletwo and \question[1]
+    
+    \question[1]{} \textbf{Gaussian - Gaussian Model:}  The noise and observations are both normally distributed. We consider the simplest case where observed signal is dependent only on a single parameter $\theta$. Then, the distribution of parameter:
+    \begin{equation}
+    p(\theta|\Vec{\lambda} \equiv \{\mu, \Sigma^2\}) = \frac{1}{\sqrt{2 \pi  \Sigma^2}} \exp \left[ -\frac{(\theta-\mu)^2}{2 \Sigma^2}\right]
+    \end{equation}
+    where $\Vec{\lambda} \equiv \{\mu, \Sigma^2\}$ are the population hyper-parameters (parameters charaterising the shape of distribution of $\theta$). The noise is also Gaussian with zero mean and variance $\sigma^2$. We can write the observed data as
+    \begin{equation}
+        d = \theta + n
+    \end{equation}
+    The likleihood of data $d$ given parameter $\theta$ is given by 
+    \begin{equation}
+        p(d|\theta) = \frac{1}{\sqrt{2 \pi  \sigma^2}} \exp \left[ -\frac{(d - \theta)^2}{2 \sigma^2}\right]
+    \end{equation}
+    \begin{enumerate}
+        \item[(a)] Compute the likelihood of data $d$ given hyper-parameters $\Vec{\lambda}$: $p(d|\Vec{\lambda})$.
+    % \begin{equation}
+    %     p(d|\Vec{\lambda} \equiv \{\mu, \Sigma^2 \}) = \frac{1}{\sqrt{2 \pi  (\Sigma^2 + \sigma^2)}} \exp \left[ -\frac{(d-\mu)^2}{2 (\Sigma^2 + \sigma^2)}\right]
+    % \end{equation}
+    \textit{Hint: You would like to use the probability multiplicative rule here, i.e.}
+    \begin{equation}
+        p(d|\Vec{\lambda}) =  \int d\theta \ p(d|\theta) p(\theta|\Vec{\lambda})
+    \end{equation}
+    \textit{and compute the integral analytically. We have ignored the selection effects here for the sake of simplicity. For $N$ number of data points, we will have}
+    \begin{equation}
+        p(D|\Vec{\lambda}) =  \prod_{i=1}^{N}\int d \theta \ p(d_i|\theta) p(\theta|\Vec{\lambda})
+    \end{equation}
+    where $D = \{d_1, d_2, ..., d_N\}$.
+    
+    \item[(b)] Assume true values of hyper-parameters as $\mu_{\mathrm{true}} = 0.5, \Sigma_{\mathrm{true}} = 1$. Choosing width of noise distribution as $\sigma = 0.1$, simulate the observations $D$ for, say $N=10^5$ samples and plot the histogram.
+    
+    \item[(c)] Assuming uniform priors on $\mu$ and $\Sigma$, find out the posteriors on the hyper-parameters $\Vec{\lambda}$. Here, given the analytical form of the likelihood, you would like to use Emcee sampler to sample the likelihood over the hyper-parameters.
+
+    \item[(d)] \textbf{[Bonus]} Put the detection threshold $d_\mathrm{th} = 0$ and see how many of the above events are detected? Plot the histogram of the detected events, i.e. $D_{\mathrm{det}} = \{ d_i\}_{i=1}^{N_{\mathrm{det}}}$ with $d_i \geq d_{\mathrm{th}}$.
+    
+    \item[(e)] \textbf{[Bonus]} Calculate the selection function $\alpha(\Vec{\lambda})$, which can be computed as
+    \begin{equation}
+        \alpha(\Vec{\lambda}) = \int_{d_{\mathrm{th}}}^\infty d d \int d\theta \ p(d|\theta) p(\theta|\Vec{\lambda})
+    \end{equation}
+    \textit{Hint: A clever choice of the order of integration here might make your life simple to evaluate it analytically. It is worth mentioning here that most of the times this integral can not be computed analytically.}
+    
+    \item[(f)] \textbf{[Bonus]} Calculate the posteriors on the hyper-parameters using the detected events, i.e. after including the selection effects, using Emcee sampler. \textit{Hint: Notice that selection effects will modify the expression for likelihood for hyper-parameters as}
+    \begin{equation}
+        p(D_{\mathrm{det}}|\Vec{\lambda}) =  \prod_{i=1}^{N_{\mathrm{det}}} \frac{\int d \theta \ p(d_i|\theta) p(\theta|\Vec{\lambda})}{\alpha(\Vec{\lambda})}
+    \end{equation}
+
+    \end{enumerate}
+
+    \question[2]{} \textbf{GWPopulation Tutorial:} Please download the \href{https://github.com/gw-odw/odw-2022/blob/main/Tutorials/Advanced_topics/Tuto_A.2_Population_Inference_with_GWPopulation.ipynb}{Jupyter-Notebook} from \textit{LIGO-Virgo Open Data Workshop-2022} on population inference of binary black hole (BBH) mergers using GWPopulation, a python package for doing population inference.
+    \begin{enumerate}
+        \item[(a)] Make statements about the formation channels of the BBHs. 
+    \end{enumerate}
+    
+    \question[3]{} 
+    \textbf{Reweighting the posteriors with the population prior:} Download posterior samples for GWs (low SNR and high SNR), and reweight with a population prior (the population prior would be fixed, as performing a hierarchical inference would be too much to do in the time). Plot the results.
+    \begin{enumerate}
+        \item[(a)] For GW150914, reweight $m_1$ and $q$ posteriors according to the mass models as used in Tutorial 2. Do the posteriors change?
+        \item[(b)] Re-do the above in the next day using the power-law + peak mass model.
+    \end{enumerate}
+    
+    \question[4]{} \textbf{[Open Ended]}
+    Perform a simple hierarchical inference. Using a code like GWPopulation might make this easier. A suggestion could be fitting a line to sets of normally distributed data points at different x values, where the mean of the Gaussians varies linearly with y. The population parameter would be the gradient and intercept of the line, as well as the standard deviation for the points. An extension would be to make the standard deviation a function of $x$ too. $d(x_i)$ = $\mu(x_i) + n( \sim \mathcal{N}(0, \sigma^2)) , \mu(x_i) = m x_i + c,   p(m,c|d)=?$
+
+\end{document}
