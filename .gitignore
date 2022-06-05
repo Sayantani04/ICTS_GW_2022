@@ -1,0 +1,23 @@
+*.ipynb_checkpoints/
+*.pyc
+*.fit
+*.fits
+*.pickle
+*.out
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.DS_Store
+*.sw[po]
+*.py[co]
+# Bah, LaTeX junk
+*.aux
+*.log
+*.synctex.gz
+*.dvi
+*.fdb_latexmk
+*.fls
+*.toc
+*.bbl
+*.blg
+*Makefile
+*.virtual_documents
