@@ -1,0 +1,48 @@
+% This is a template for doing homework assignments in LaTeX
+
+\documentclass{article} % This command is used to set the type of document you are working on such as an article, book, or presenation
+
+\usepackage[margin=1in,footskip=0.25in]{geometry} % This package allows the editing of the page layout
+\usepackage{amsmath}  % This package allows the use of a large range of mathematical formula, commands, and symbols
+\usepackage{graphicx}  % This package allows the importing of images
+\usepackage{hyperref}
+\usepackage{physics}
+
+\newcommand{\question}[2][]{\begin{flushleft}
+        \textbf{Problem #1}: %\textbf{Gaussian - Gaussian Model}  
+\end{flushleft}
+}
+
+\newcommand{\sol}{\textbf{Solution}:} %Use if you want a boldface solution line
+\newcommand{\maketitletwo}[2][]{\begin{center}
+        \Large{\textbf{Problem Set - 4}
+            
+            Compact Binary Evolution, Rates and Population Modelling} % Name of course here
+        \vspace{10pt}
+        
+        \normalsize{Aditya Vijaykumar  % Your name here
+        } \\
+        \vspace{5pt}  June 8, 2022     % Change to due date if preferred
+        \vspace{15pt}
+        
+\end{center}}
+\begin{document}
+    \maketitletwo[5]  % Optional argument is assignment number
+    %Keep a blank space between maketitletwo and \question[1]
+    
+    \question[1]{} \textbf{Review of LVK Results:} 
+    Download posterior samples of the Power Law + Peak Model from \href{https://drive.google.com/drive/folders/1lBTo12EoWYjvR0Bf76PSy6tP2ms6nt41?usp=sharing}{this link}.
+    \begin{enumerate}
+    \item Plot the corner plot of the posterior samples. 
+    
+    \item Use the GWTC-3 paper to figure out the priors on these parameters and plot them too. Are the posteriors sufficiently different from the priors?
+    
+    \item What are the relevant degeneracies that you can see? Explain all of them.
+    
+    
+    \item What statements about the underlying population of binaries can you make from these results?
+    \item Select one sample at random. From this, create a distribution of the source frame mass m1. Draw a population of binaries from this distribution.
+    \item Now repeat the above (still with one sample) to draw a population in mass ratio and redshift as well
+    \item Use all the posterior samples to draw a population in all parameters.
+\end{enumerate}
+\end{document}
