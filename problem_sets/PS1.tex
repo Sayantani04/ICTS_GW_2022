@@ -43,14 +43,14 @@
      \item Use $\mathrm{\frac{dE}{dt}}$ or $\mathrm{\frac{dJ}{dt}}$ to calculate the change in the separation between the two bodies. Assume circular case for simplification.
      \item Use the expression of the change in the separation between the two bodies to obtain lifetime of the binary as a function of the initial separation, $\mathrm{a_0}$.
      \item Calculate the lifetime for a binary star with equal component masses of $1 M_{\odot}$ for a range of initial separation from 0.01 AU to 1 AU and plot it. Vary the mass ratio ($\mathrm{q=m_2/m_1}$ with $\mathrm{m_1 > m_2}$ ) and see how the lifetime changes for the same values of initial separation.
-    [$\mathrm{G = 6.67\times10^{-8}\,cm^3g^{-1}s^{-2}}$, $\mathrm{c = 3.0\times10^10\,cm s^{-1}}$,
-    $\mathrm{M_{\odot} = 1.99\times10^33\,g}$, $\mathrm{s = 3.17098\times10^{-8}\,yr}$, 
-    $\mathrm{H_0 = 14.4\times10^9\,yr}$, \\
-    $\mathrm{AU = 1.496\times10^13\,cm}$]
+    [$\mathrm{G = 6.67\times10^{-8}\,cm^3g^{-1}s^{-2}}$, $\mathrm{c = 3.0\times10^{10}\,cm s^{-1}}$,
+    $\mathrm{M_{\odot} = 1.99\times10^{33}\,g}$, $\mathrm{s = 3.17098\times10^{-8}\,yr}$, 
+    $\mathrm{t_{Hubble} = 14.4\times10^9\,yr}$, \\
+    $\mathrm{AU = 1.496\times10^{13}\,cm}$]
     
     \item Calculate the initial separation of the binary required for it to merge within the Hubble time. Compare this value with the typical radius of the star in its giant phase.
     
-    \textit{Hint: Typical radius of a star in its giant phase is, $\mathrm{R_G = 1 AU}$. If $\mathrm{a_0 < R_G}$, the stars will engulf each other in this phase and will not form a binary. But, if $\mathrm{a_0 > R_G}$, the stars will not merge in Hubble time. This tells that some mechanism is needed to shrink the orbits, for the binaries to be close enough to merge through gravitational-wave emission, after they have evolved through their giant phase.}
+    \textit{Hint: Typical radius of a star in its giant phase is, $\mathrm{R_G = 1 AU}$. If $\mathrm{a_0 < R_G}$, the stars will engulf each other in this phase and will not form a compact binary. But, if $\mathrm{a_0 > R_G}$, the stars will not merge in Hubble time. This tells that some mechanism is needed to shrink the orbits, for the binaries to be close enough to merge through gravitational-wave emission in Hubble time, after they have evolved through their giant phase.}
     
     \item An approximate estimation of the radius of the Roche lobe is given by Eggleton’s approximate formula,
     
@@ -71,7 +71,7 @@
     
     
     \begin{enumerate}
-                \item Download the \href{https://drive.google.com/file/d/15zRrlW-Yby1k_wMhR8DXoVGxkWl-y5fZ/view?usp=sharing}{.h5 file}\footnote{Full data can be found \href{https://zenodo.org/record/4448170#.YmFY03_MKV4}{here}} and use {\textsc{h5py}} python package to read it. 
+                \item Download the \href{https://drive.google.com/file/d/15zRrlW-Yby1k_wMhR8DXoVGxkWl-y5fZ/view?usp=sharing}{.h5 file}\footnote{Full data can be found \href{https://zenodo.org/record/4448170#.YmFY03_MKV4}{here}} and use \textsc{h5py} python package to read it. 
                 \item Data for each model can be extracted using the \textit{read\_hdf} function from {\textsc{pandas}} python package. Note that you will have to call each model by passing the corresponding key to \textit{read\_hdf} function.
                 \item Extract samples for chirp mass ($\mathrm{\mathcal{M}_c}$) from every model by keeping  natal spin ($\mathrm{\chi_b}$) and common envelop efficiency ($\mathrm{\alpha_{CE}}$) fixed. Overplot them as posterior probability distributions (histograms) and explain the key differences. 
                 \item Repeat the above for other intrinsic parameters like mass ratio ($\mathrm{q}$), effective spin parameter, ($\mathrm{\chi_{eff}}$) and redshift ($\mathrm{z}$).
