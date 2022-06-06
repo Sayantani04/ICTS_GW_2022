@@ -77,14 +77,41 @@
 
     \question[2]{} \textbf{GWPopulation Tutorial:} Please download the \href{https://github.com/gw-odw/odw-2022/blob/main/Tutorials/Advanced_topics/Tuto_A.2_Population_Inference_with_GWPopulation.ipynb}{Jupyter-Notebook} from \textit{LIGO-Virgo Open Data Workshop-2022} on population inference of binary black hole (BBH) mergers using GWPopulation, a python package for doing population inference.
     \begin{enumerate}
-        \item[(a)] Make statements about the formation channels of the BBHs. 
+        \item[(a)] Which population model is used here? Are there other population models that could be used?
+        \item[(b)] Attempt the challenge question in the notebook.
+	\item[(c)] How does one test the different population models against the data? 
+	\item[(d)] Make statements about the formation channels of binaries based on the above inference.
+
     \end{enumerate}
     
-    \question[3]{} 
-    \textbf{Reweighting the posteriors with the population prior:} Download posterior samples for GWs (low SNR and high SNR), and reweight with a population prior (the population prior would be fixed, as performing a hierarchical inference would be too much to do in the time). Plot the results.
-    \begin{enumerate}
-        \item[(a)] For GW150914, reweight $m_1$ and $q$ posteriors according to the mass models as used in Tutorial 2. Do the posteriors change?
-        \item[(b)] Re-do the above in the next day using the power-law + peak mass model.
+    
+    \question[3]{} \textbf{Reweighting the posteriors with the population prior:} By now we know that the posterior is proportional to prior times the likelihood, where the prior is choosen from an "astrophysical" expectation of the binary parameters. However, different astrophysical models predict different populations of the binary parameters(eg: power law in primary masses). As a PE run is expensive, one can simply re-weight the posteriors to go from one prior distribution to another.
+   
+In this excercise we will reweight the GW150914 posteriors on m1 and q choosing to a powerlaw population model as our prior.
+\begin{equation}
+ 	P_2(m_1,q|d) = P_1(m_1,q|d) \frac{P_2(m_1,q)}{P_1(m_1,q)}
+\end{equation}
+
+\begin{enumerate}
+ 	\item[(a)] Derive the above formula using the bayes theorem. 
+	\item[(b)] What prior was used for the component masses? Is it uniform? $Hint$: try plotting histograms and $m_1-m_2$ scatter. Are there any constraints on masses? What is the minimum and maximum mass? 
+	\item[(c)] Evaluate and plot the priors in $m_1$ and $q$. Can you write an analytical expression for the prior, $P_{PE}(m_1,q)$? $Hint$: Derieve $P(q|m_1)$ and use bayes theorem.
+	\item[(d)] Using the population model from the last question, after fixing the hyperparameter values from the maximum likelihood values, can you write the joint probability: $P_{pop}(m_1,q)$? \\ 
+
+$p(m_1|\alpha, M_\min, M_\max) \propto \begin{cases} m_1 ^ {-\alpha} & \text{$M_\min$ < $m_1$ < $M_\max$} \\ 0 & \text{otherwise}\end{cases}$
+
+$p(q|\beta, M_\min, m_1) \propto \begin{cases}
+q ^ {\beta} & \text{if $M_\min$ < $m_2$ < $m_1$} \\ 
+0 & \text{otherwise}
+\end{cases}$
+
+\item[(e)]Reweight the GW150914 posteriors of $m_1$ and $q$ taking the above population distribution($P_{pop}(m_1,q)$) as a prior. Plot corner of new and old posterior samples, what do you see? $Hint$: You can do rejection sampling.
+
+\item[(f)][Bonus] Evaluate $P_2(m_1,q|d)$ directly by performing KDE on the original posterior samples. Compare your results with the above re-weighting method.
+
+\item[(g)][Bonus] Use various mass populations models from GWPopulation(including the above one) as prior and re-weight the posteriors.
+
+        
     \end{enumerate}
 
 	\question[4]{} \textbf{[Bonus]}
