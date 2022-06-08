@@ -61,34 +61,41 @@
     \end{enumerate}
     
     
-    \question[3]{} 
-    \textbf{Fitting problems:} 
     
-    \begin{enumerate}
-    	
-    \item[(a)] Write down the equation for a straight line, and choose a value for the slope and the intercept. Simulate some data assuming the line as the signal, and adding some gaussian noise. 
-    
-    \item[(b)] Now estimate the parameters of the line from data by:
-    \begin{itemize}
-    	\item Gridding the space of parameters.
-   		\item Using traditional $ \chi^2$ fitting methods, such as \texttt{scipy.optimize.curve\_fit}.
-   		\item A Markov Chain Monte Carlo sampler like emcee
-   	\end{itemize}
-    Discuss stability and costs of each of these methods.
-    
-    
-    \item[(c)] Now repeat the above problem for your favourite  $n$-th order ($n\ge3$)  polynomial.
-    
-    \end{enumerate}
-    
-    
-    \question[4]{} \textbf{Posterior Samples from GW150914:}
+    \question[3]{} \textbf{Posterior Samples from GW150914:}
     Download posterior samples of GW150914 from \href{https://drive.google.com/drive/folders/1L2xsQM4mfoljLTlTrF6nTbvZ1yM0l4hH?usp=sharing}{this link}.
     \begin{enumerate}
-   	\item[(a)] Plot the parameters on a corner plot by using the \texttt{corner}\footnote{https://pypi.org/project/corner/} package. You can also try using the \texttt{pesummary}\footnote{https://pypi.org/project/pesummary/} package for the same.
-    \item[(b)] What correlations do you see? Can you explain these correlations from your theoretical understanding?
-    \item[(c)] Come up with different ways in which you can define credible intervals. Draw 90\% credible intervals with these samples, and quote all the numbers.
+   	\item[(a)] Plot the following set of parameters on a corner plot by using the \texttt{corner}\footnote{https://pypi.org/project/corner/} package. You can also try using the \texttt{pesummary}\footnote{https://pypi.org/project/pesummary/} package for the same:
+   	
+   	\begin{itemize}
+   		\item \texttt{chirp\_mass, mass\_ratio, mass\_1, mass\_2}
+   		\item \texttt{chirp\_mass, luminosity\_distance, theta\_jn}
+   		\item \texttt{ra, dec, geocent\_time}
+   	\end{itemize}
+   	
+    What correlations do you see? Can you explain these correlations from your theoretical understanding?
+    \item[(b)] Come up with different ways in which you can define credible intervals. Draw 90\% credible intervals with these samples using one of the ways, and quote all the numbers.
     \end{enumerate}
     
+    \question[4]{} 
+\textbf{[Bonus Question] Fitting problems:} 
+
+\begin{enumerate}
+	
+	\item[(a)] Write down the equation for a straight line, and choose a value for the slope and the intercept. Simulate some data assuming the line as the signal, and adding some gaussian noise. 
+	
+	\item[(b)] Now estimate the parameters of the line from data by:
+	\begin{itemize}
+		\item Gridding the space of parameters.
+		\item Using traditional $ \chi^2$ fitting methods, such as \texttt{scipy.optimize.curve\_fit}.
+		\item A Markov Chain Monte Carlo sampler like emcee
+	\end{itemize}
+	Discuss stability and costs of each of these methods.
+	
+	
+	\item[(c)] Now repeat the above problem for your favourite  $n$-th order ($n\ge3$)  polynomial.
+	
+\end{enumerate}
+
 
 \end{document}

@@ -1,0 +1,57 @@
+% This is a template for doing homework assignments in LaTeX
+
+\documentclass{article} % This command is used to set the type of document you are working on such as an article, book, or presenation
+
+\usepackage[margin=1in,footskip=0.25in]{geometry} % This package allows the editing of the page layout
+\usepackage{amsmath}  % This package allows the use of a large range of mathematical formula, commands, and symbols
+\usepackage{graphicx}  % This package allows the importing of images
+\usepackage{hyperref}
+\usepackage{physics}
+
+\newcommand{\question}[2][]{\begin{flushleft}
+        \textbf{Problem #1}: %\textbf{Gaussian - Gaussian Model}  
+\end{flushleft}
+}
+
+\newcommand{\sol}{\textbf{Solution}:} %Use if you want a boldface solution line
+\newcommand{\maketitletwo}[2][]{\begin{center}
+        \Large{\textbf{Problem Set - 2}
+            
+            Compact Binary Evolution, Rates and Population Modelling} % Name of course here
+        \vspace{10pt}
+        
+        \normalsize{Aditya Vijaykumar and Sayantani Datta  % Your name here
+        } \\
+        \vspace{5pt}  June 8, 2022     % Change to due date if preferred
+        \vspace{15pt}
+        
+\end{center}}
+\begin{document}
+    \maketitletwo[5]  % Optional argument is assignment number
+    %Keep a blank space between maketitletwo and \question[1]
+    
+     \question[1]{} \textbf{Mass transfer:} Assume that the more massive component of the binary, $\mathrm{m_1}$ undergoes mass transfer ($\mathrm{dm_1/dt <0}$), where some fraction of the mass ($\beta$) may be lost due to various mechanisms like stellar winds.
+     
+     \begin{enumerate}
+     \item Conservative case: For $\beta=0$, calculate whether mass transfer in a binary shrinks the orbit or expands it as a function of mass ratio.
+     \item Non-conservative case: Evaluate the change in the orbital separation by considering some non-zero values of $\beta$. Plot the change as a function of different beta values.
+
+     \end{enumerate}
+     
+     
+     
+    
+    \question[2]{} \textbf{Simulating a Population of Binaries} 
+    
+    \begin{enumerate}
+    \item The mass function of stars was first posited by Edwin Salpeter in 1955. While there are many updated models for the mass function, we use the Salpeter mass function for illustration purposes. The mass function $\xi(m)$ is given by $$\xi(m) \propto m^{-2.35}.$$ Draw samples from this mass function for the primary mass in the binary. Assume that the minmum mass of stars under consideration is $20 M_\odot$ and maximum mass is $150 M_\odot$. 
+    
+    \item Assume that the distribution of mass ratio $q=m_2/m_1$ (ie. smaller mass divided by larger mass) is uniform. That is, $p(q) = \mathrm{constant}$, with limits 0.25 to 1.
+    
+    \item Calculate the remnant mass by assuming $$M_\mathrm{remnant} = M_\mathrm{initial}^{\alpha}; \ \alpha = 0.75.$$ This power-law prescription is rather heuristic, and you can try to play around by changing the power law exponent.
+    
+    
+    \item Opik's law models the distribution of initial separation $a$  as $\frac{dP}{da} \propto 1/a $ ie. $\frac{dP}{d(\log a)} \propto 1$. Hence, this corresponds to sampling $a$ from a logUniform distribution. We will use the upper and lower limits as $10 R_\odot$ and $10^5 R_\odot$.
+    \item  Put all the above together to calculate the time delay distribution. Use functions written in Problem Set 1.
+\end{enumerate}
+\end{document}
