@@ -89,13 +89,14 @@
     \question[3]{} 
     \textbf{Reweighting the posteriors with the population prior:} By now we know that the posterior is proportional to prior times the likelihood, where the prior is choosen from an "astrophysical" expectation of the binary parameters. However, different astrophysical models predict different populations of the binary parameters(eg: power law in primary masses). As a PE run is expensive, one can simply re-weight the posteriors to go from one prior distribution to another.
    
-In this excercise we will reweight the GW150914 posteriors on m1 and q choosing to a powerlaw population model as our prior.
+In this excercise we will reweight the GW150914 posteriors on $m_1$ and $q$  choosing to a powerlaw population model as our prior.
 \begin{equation}
  	P_2(m_1,q|d) = P_1(m_1,q|d) \frac{P_2(m_1,q)}{P_1(m_1,q)}
 \end{equation}
 
 \begin{enumerate}
- 	\item[(a)] Derive the above formula using the bayes theorem. 
+ 	\item[(a)] Derive the above formula using the bayes theorem. Now download or copy the ODW-2022 Tutorial 3.1 notebook. See[1]. 
+
 	\item[(b)] What prior was used for the component masses? Is it uniform? $Hint$: try plotting histograms and $m_1-m_2$ scatter. Are there any constraints on masses? What is the minimum and maximum mass? 
 	\item[(c)] Evaluate and plot the priors in $m_1$ and $q$. Can you write an analytical expression for the prior, $P_{PE}(m_1,q)$? $Hint$: Derieve $P(q|m_1)$ and use bayes theorem.
 	\item[(d)] Using the population model from the last question, after fixing the hyperparameter values from the maximum likelihood values, can you write the joint probability: $P_{pop}(m_1,q)$? \\ 
@@ -110,13 +111,17 @@ q ^ {\beta},  & M_\mathrm{min} < m_2 < m_1 \\
 \end{cases}
 \end{equation}
 
+\item[(e)] Get source frame posteriors on $m_1$
 
-\item[(e)]Reweight the GW150914 posteriors of $m_1$ and $q$ taking the above population distribution($P_{pop}(m_1,q)$) as a prior. Plot corner of new and old posterior samples, what do you see? $Hint$: You can do rejection sampling.
-
-\item[(f)]\textbf{[Bonus]} Evaluate $P_2(m_1,q|d)$ directly by performing KDE on the original posterior samples. Compare your results with the above re-weighting method.
+\item[(f)] Reweight the GW150914 posteriors of $m_1$ and $q$ taking the above population distribution($P_{pop}(m_1,q)$) as a prior. Plot corner of new and old posterior samples, what do you see? Use $M_{min} = 10,  M_{max} = 80, \alpha = 2.35, \beta = 1.4$. $Hint$: You can do rejection sampling. See [2]. 
 
 \item[(g)]\textbf{[Bonus]} Use various mass population models from GWPopulation(including the above one) as prior and re-weight the posteriors.
 
+\item[(h)]\textbf{[Bonus]} Evaluate $P_2(m_1,q|d)$ directly by performing KDE on the original posterior samples. Compare your results with the above re-weighting method. 
+
+\item[\[1\]] \url{https://github.com/gw-odw/odw-2022/blob/main/Tutorials/Day_3/Tuto_3.1_Parameter_estimation_for_compact_object_mergers.ipynb} \\
+
+\item[\[2\]] \url {https://towardsdatascience.com/what-is-rejection-sampling-1f6aff92330d}
         
     \end{enumerate}
     
